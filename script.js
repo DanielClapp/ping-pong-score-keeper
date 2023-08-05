@@ -1,27 +1,29 @@
-const p1Score = document.getElementById('p1Score');
-const p2Score = document.getElementById('p2Score');
-const playTo = document.getElementById('playTo');
-const button1 = document.getElementById('button1');
-const button2 = document.getElementById('button2');
-const reset = document.getElementById('reset');
+const p1Button = document.querySelector('#p1Button');
+const p2Button = document.querySelector('#p2Button');
+const p1Display = document.querySelector('#p1Display');
+const p2Display = document.querySelector('#p2Display');
+let winningScore = 5;
 
-let p1Count = 0;
-let p2Count = 0;
+let p1Score = 0;
+let p2Score = 0;
+let isGameOver = false;
 
-let playToNumber = `${playTo.value}`;
-
-// let playToNumber = playTo.value;
-// console.log(playToNumber);
-playTo.addEventListener('input', function (e) {
-  e = playTo.value;
-  console.log(e);
-  return e;
+p1Button.addEventListener('click', function () {
+  if (!isGameOver) {
+    p1Score += 1;
+    if (p1Score === winningScore) {
+      isGameOver = true;
+    }
+    p1Display.textContent = p1Score;
+  }
 });
 
-console.log(playToNumber);
-
-button1.addEventListener('click', () => {
-  p1Count++;
-  console.log(p1Count);
-  p1Score.innerText = `${p1Count}`;
+p2Button.addEventListener('click', function () {
+  if (!isGameOver) {
+    p2Score += 1;
+    if (p2Score === winningScore) {
+      isGameOver = true;
+    }
+    p2Display.textContent = p2Score;
+  }
 });
